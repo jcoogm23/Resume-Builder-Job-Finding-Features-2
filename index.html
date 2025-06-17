@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Match & Apply</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <img src="Main_logo.png" alt="Match & Apply Logo" class="logo" />
+      <nav>
+       <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#templates">Resume Templates</a></li> 
+            <li><a href="#resume">Resume Builder</a></li>
+            <li><a href="#jobs">Job Finder</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+       </ul>
+
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1><span>Match & Apply:</span> AI-Powered Job & Resume Assistant</h1>
+      <p>Build stunning resumes and get instantly matched with your dream jobs.</p>
+      <a href="#features" class="btn-primary">Get Started</a>
+    </div>
+    <div class="hero-img">
+      <img src="images3.png" alt="AI Resume and Job Finder">
+    </div>
+  </section>
+  <div class="carousel-container">
+  <div class="carousel-track">
+    <img src="template.jpg " alt="Template 1">
+    <img src="template.jpg" alt="Template 2">
+    <img src="template.jpg" alt="Template 3">
+  </div>
+</div>
+
+
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Core Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-file-alt fa-2x"></i>
+          <h3>Smart Resume Builder</h3>
+          <p>Automatically generate resumes based on your skills and preferences.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-briefcase fa-2x"></i>
+          <h3>Job Matching AI</h3>
+          <p>Find jobs that perfectly fit your qualifications and interests.</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-paper-plane fa-2x"></i>
+          <h3>One-Click Apply</h3>
+          <p>Submit applications effortlessly to multiple job postings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Templates Section -->
+<section id="templates" class="templates">
+  <div class="container">
+    <h2 class="section-title">Resume Templates</h2>
+    <p class="templates-desc">
+      Download one of our free, Formative and friendly resume designs modern, professional, or simple.
+      match it with your details and save as PDF.
+    </p>
+
+    <div class="template-grid">
+      <div class="template-card">
+        <img src="template.jpg" alt="Modern Resume Template">
+        <h3>Modern Template</h3>
+        <button onclick="downloadTemplate('modern')" class="btn-secondary">Download</button>
+      </div>
+      <div class="template-card">
+        <img src="template.jpg" alt="Professional Resume Template">
+        <h3>Professional Template</h3>
+        <button onclick="downloadTemplate('professional')" class="btn-secondary">Download</button>
+      </div>
+      <div class="template-card">
+        <img src="template.jpg" alt="Simple Resume Template">
+        <h3>Simple Template</h3>
+        <button onclick="downloadTemplate('simple')" class="btn-secondary">Download</button>
+      </div>
+      <div class="template-card">
+        <img src="template.jpg" alt="Simple Resume Template">
+        <h3>Simple Template</h3>
+        <button onclick="downloadTemplate('simple')" class="btn-secondary">Download</button>
+      </div>
+      <div class="template-card">
+        <img src="template.jpg" alt="Simple Resume Template">
+        <h3>Simple Template</h3>
+        <button onclick="downloadTemplate('simple')" class="btn-secondary">Download</button>
+      </div>
+      <div class="template-card">
+        <img src="template.jpg" alt="Simple Resume Template">
+        <h3>Simple Template</h3>
+        <button onclick="downloadTemplate('simple')" class="btn-secondary">Download</button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="view-all-container">
+  <button onclick="showAllTemplates()" class="btn-primary">View All Templates</button>
+</div>
+
+<script>
+  function downloadTemplate(type) {
+    const links = {
+      modern: 'files/Resume-Modern.docx',
+      professional: 'files/Resume-Professional.docx',
+      simple: 'files/Resume-Simple.docx'
+    };
+    const url = links[type];
+    if (url) window.location.href = url;
+  }
+</script>
+
+ 
+  <section id="builder" class="builder">
+    <div class="container">
+      <h2 class="section-title">Resume Builder</h2>
+      <form id="resumeForm">
+        <input type="text" id="fullName" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <textarea id="summary" placeholder="Professional Summary" required></textarea>
+        <input type="text" id="skills" placeholder="Skills (comma-separated)" required>
+        <textarea id="experience" placeholder="Work Experience" required></textarea>
+        <button type="submit" class="btn-primary">Generate Resume</button>
+      </form>
+      <div id="resumeOutput" class="resume-output"></div>
+    </div>
+  </section>
+
+  <section id="jobs" class="jobs">
+    <div class="container">
+      <h2 class="section-title">Job Finder</h2>
+      <label for="jobQuery">Search Job Title or Skill:</label>
+      <input type="text" id="jobQuery" placeholder="Enter your skill or job title">
+      <button onclick="findJobs()" class="btn-primary">Find Jobs</button>
+
+      <label for="jobChoices">Or select a job category:</label>
+      <select id="jobChoices" onchange="selectJob(this.value)">
+        <option value="">-- Choose a job --</option>
+        <option value="Software Developer">Software Developer</option>
+        <option value="Graphic Designer">Graphic Designer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Customer Support">Customer Support</option>
+        <option value="Digital Marketing Specialist">Digital Marketing Specialist</option>
+      </select>
+
+      <div id="jobResults" class="job-results"></div>
+    </div>
+  </section>
+
+  <section id="team" class="team">
+    <div class="container">
+      <h2 class="section-title">Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="images2.jpg" alt="Jaennie Ordonia">
+          <h3>Jaennie Ordonia</h3>
+          <p>Lead Researcher & System Developer</p>
+        </div>
+        <div class="team-member">
+          <img src="jco img.jpg" alt="Jerico Maningas">
+          <h3>Jerico Maningas</h3>
+          <p>Researcher,Assistant UI/UXDesigner & System Developer</p>
+        </div>
+        <div class="team-member">
+          <img src="images.png" alt="Allyza Guillermo">
+          <h3>Allyza Guillermo</h3>
+          <p>Project Manager,System Developer & Researcher</p>
+        </div>
+        <div class="team-member">
+          <img src="Vincent img.jpg" alt="Vincent Del Rosario">
+          <h3>Vincent Del Rosario</h3>
+          <p>Lead UI/UX Designer & System Developer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+<footer id="contact">
+    <div class="jobhunt-section">
+      <h3>JobHunt</h3>
+      <p>Discover a great job opportunities and build the perfect resume with Match & Apply. Our platform uses smart matching to connect you with employers looking for your exact skills. Start your career journey now!</p>
+    </div>
+
+    <div class="contact-info">
+      <h4>Contact Us</h4>
+      <p>Email: support@matchapply.com</p>
+      <p>Phone: +63 999 976 8797</p>
+      <p>Location: Sta. Maria, Bulacan, Philippines</p>
+    </div>
+
+  <footer id="contact">
+    <div class="container footer-content">
+      <p>Follow us on:</p>
+      <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+        
+      </div>
+    </div>
+  </footer>
+      <p>&copy; 2025 Match & Apply. All rights reserved.</p>
+  <script src="script.js"></script>
+</body>
+</html>
